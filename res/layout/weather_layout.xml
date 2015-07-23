@@ -10,8 +10,8 @@
         android:background="#66ccff">
         <Button
             android:id="@+id/switch_city"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:background="@drawable/home"
@@ -26,8 +26,8 @@
             />
         <Button
             android:id="@+id/refresh_weather"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
@@ -100,6 +100,7 @@
                     android:layout_marginRight="10dp"
                     android:textColor="#FFF"
                     android:textSize="40sp"
+                    android:text="~"
                     />
                 
                 <TextView

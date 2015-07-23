@@ -1,8 +1,6 @@
 package com.coolweather.app.activity;
 
-import android.R.integer;
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -144,8 +142,10 @@ public class WeatherActivity extends Activity implements OnClickListener{
 		currentDate.setText(prefs.getString("current_date", ""));
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityName.setVisibility(View.VISIBLE);
-		Intent intent = new Intent(this, AutoUpdateService.class);
-		startService(intent);
+		if (prefs.getBoolean("back_auto_update", true)) {
+			Intent intent = new Intent(this, AutoUpdateService.class);
+			startService(intent);
+		}
 	}
 }
 

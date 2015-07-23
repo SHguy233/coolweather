@@ -29,8 +29,10 @@ public class AutoUpdateService extends Service {
 				updateWeather();
 			}
 		}).start();
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		int frequencyHour = prefs.getInt("update_frequency_time", 0);
 		AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
-		int eightHours = 8 * 60 *60 *1000;
+		int eightHours = frequencyHour * 60 *60 *1000;
 		long triggerAtTime = SystemClock.elapsedRealtime() + eightHours;
 		Intent intent2 = new Intent(this, AutoUpdateReceiver.class);
 		PendingIntent pi = PendingIntent.getBroadcast(this, 0, intent2, 0);

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#66ccff">
+        
+        <Button
+            android:id="@+id/back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/home"
+            />
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="#fff"
+            android:textSize="24sp"
+            android:text="设置"
+            />
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:textSize="20sp"
+        android:text="后台自动更新"/>
+
+    <Switch
+        android:id="@+id/back_auto_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:textOn="ON" 
+        android:textOff="OFF"/>
+    
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:id="@+id/update_frequency_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textSize="20sp"
+        android:text="更新频率"/>
+    
+    <EditText
+        android:id="@+id/update_frequency"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="单位：小时"/>
+    
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/confirm"/>
+        
+    </LinearLayout>
+
+</LinearLayout>
