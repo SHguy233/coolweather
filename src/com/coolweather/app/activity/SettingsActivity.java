@@ -1,6 +1,5 @@
 package com.coolweather.app.activity;
 
-import android.R.integer;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -91,6 +90,7 @@ public class SettingsActivity extends Activity {
 		int time = Integer.parseInt(frequencyTime);
 		SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
 		editor.putInt("update_frequency_time", time);
+		editor.commit();
 		
 	}
 }

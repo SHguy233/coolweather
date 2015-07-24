@@ -32,8 +32,8 @@ public class AutoUpdateService extends Service {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		int frequencyHour = prefs.getInt("update_frequency_time", 0);
 		AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
-		int eightHours = frequencyHour * 60 *60 *1000;
-		long triggerAtTime = SystemClock.elapsedRealtime() + eightHours;
+		int hours = frequencyHour * 60 *60 *1000;
+		long triggerAtTime = SystemClock.elapsedRealtime() + hours;
 		Intent intent2 = new Intent(this, AutoUpdateReceiver.class);
 		PendingIntent pi = PendingIntent.getBroadcast(this, 0, intent2, 0);
 		manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pi);

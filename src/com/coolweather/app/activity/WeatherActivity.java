@@ -6,12 +6,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.coolweather.app.service.AutoUpdateService;
 import com.coolweather.app.util.HttpCallbackListener;
@@ -38,6 +41,10 @@ public class WeatherActivity extends Activity implements OnClickListener{
 	private Button switchCity;
 	
 	private Button refreshWeather;
+	
+	private ImageView weatherPic;
+	
+	private long exitTime = 0;
 		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +64,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 		switchCity.setOnClickListener(this);
 		refreshWeather.setOnClickListener(this);
 		String countyCode = getIntent().getStringExtra("county_code");
+		weatherPic = (ImageView) findViewById(R.id.weather_pic);
 		if (!TextUtils.isEmpty(countyCode)) {
 			publishTime.setText("同步中...");
 			weatherInfoLayout.setVisibility(View.INVISIBLE);
@@ -64,6 +72,16 @@ public class WeatherActivity extends Activity implements OnClickListener{
 			queryWeatherCode(countyCode);
 		} else {
 			showWeather();
+		}
+		String weather = showWeather();
+		if ("多云".equals(weather)) {
+			weatherPic.setImageResource(R.drawable.duoyun);
+		} else if ("小雨".equals(weather)) {
+			weatherPic.setImageResource(R.drawable.xiaoyu);
+		} else if ("阴转阵雨".equals(weather)) {
+			weatherPic.setImageResource(R.drawable.yinzhuanduoyun);
+		} else {
+			weatherPic.setImageResource(R.drawable.qing);
 		}
 	}
 	
@@ -132,7 +150,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 		});
 	}
 	
-	private void showWeather() {
+	private String showWeather() {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		cityName.setText(prefs.getString("city_name", ""));
 		temp1.setText(prefs.getString("temp1", ""));
@@ -146,6 +164,24 @@ public class WeatherActivity extends Activity implements OnClickListener{
 			Intent intent = new Intent(this, AutoUpdateService.class);
 			startService(intent);
 		}
+		String weather = prefs.getString("weather_desc", "");
+		return weather;
+	}
+	
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+			if ((System.currentTimeMillis() - exitTime) > 2000) {
+			Toast.makeText(getApplicationContext(), "再按一次退出", Toast.LENGTH_SHORT).show();
+			exitTime = System.currentTimeMillis();
+			} else {
+				finish();
+				System.exit(0);
+			}	
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 }
 

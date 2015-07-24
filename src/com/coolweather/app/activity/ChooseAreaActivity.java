@@ -106,7 +106,6 @@ public class ChooseAreaActivity extends Activity {
 		queryProvinces();
 		settings = (Button) findViewById(R.id.settings);
 		settings.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(ChooseAreaActivity.this, SettingsActivity.class);
