@@ -55,14 +55,27 @@
     <LinearLayout
         android:id="@+id/update_frequency_layout"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <TextView 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:textSize="20sp"
-        android:text="更新频率"/>
+        android:text="更新频率："/>
     
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+	/>    
+	</LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/update_time_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
     <EditText
         android:id="@+id/update_frequency"
         android:layout_width="0dp"
@@ -77,5 +90,7 @@
         android:background="@drawable/confirm"/>
         
     </LinearLayout>
+
+
 
 </LinearLayout>

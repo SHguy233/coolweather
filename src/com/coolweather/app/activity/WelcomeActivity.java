@@ -24,6 +24,6 @@ public class WelcomeActivity extends Activity {
 				startActivity(intent);
 			}
 		};
-		timer.schedule(task, 1000 * 5);
+		timer.schedule(task, 1000 * 3);
 	}
 }
