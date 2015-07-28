@@ -1,6 +1,5 @@
 package com.coolweather.app.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -22,7 +21,7 @@ import android.widget.Toast;
 
 import com.example.coolweather.R;
 
-public class SettingsActivity extends Activity {
+public class SettingsActivity extends BaseActivity {
 	
 	private Switch BackAutoUpdate;
 	

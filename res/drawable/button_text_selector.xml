@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+<!-- 点击后的颜色 -->
+<item android:state_pressed="true" android:color="#66ccff"/>
+
+<!-- 默认 -->
+<item android:color="#fff"/>
+
+</selector>

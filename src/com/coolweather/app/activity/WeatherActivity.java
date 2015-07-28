@@ -1,6 +1,5 @@
 package com.coolweather.app.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,8 +20,9 @@ import com.coolweather.app.util.HttpCallbackListener;
 import com.coolweather.app.util.HttpUtil;
 import com.coolweather.app.util.Utility;
 import com.example.coolweather.R;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
-public class WeatherActivity extends Activity implements OnClickListener{
+public class WeatherActivity extends BaseActivity implements OnClickListener{
 	
 	private LinearLayout weatherInfoLayout;
 	
@@ -45,6 +45,10 @@ public class WeatherActivity extends Activity implements OnClickListener{
 	private ImageView weatherPic;
 	
 	private long exitTime = 0;
+	
+	private SlidingMenu slidingMenu;
+	
+	private Button exit;
 		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +87,21 @@ public class WeatherActivity extends Activity implements OnClickListener{
 		} else {
 			weatherPic.setImageResource(R.drawable.qing);
 		}
+		//滑动菜单
+		slidingMenu = new SlidingMenu(this);
+		slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+		slidingMenu.setMode(SlidingMenu.LEFT);
+		slidingMenu.setBehindOffsetRes(R.dimen.sliding_menu_offset);
+		slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+		slidingMenu.setMenu(R.layout.sliding_menu);
+		exit = (Button) findViewById(R.id.exit);
+		exit.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				ActivityCollector.finishAll();
+			}
+		});
 	}
 	
 	@Override
@@ -176,8 +195,7 @@ public class WeatherActivity extends Activity implements OnClickListener{
 			Toast.makeText(getApplicationContext(), "再按一次退出", Toast.LENGTH_SHORT).show();
 			exitTime = System.currentTimeMillis();
 			} else {
-				finish();
-				System.exit(0);
+				ActivityCollector.finishAll();
 			}	
 			return true;
 		}

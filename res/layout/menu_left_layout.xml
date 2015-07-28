@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="40dp"
+        android:paddingTop="30dp" >
+
+        <TextView
+            android:id="@+id/news"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="20dp"
+            android:gravity="center_vertical"
+            android:text="新闻"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/read"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/news"
+            android:layout_marginTop="30dp"
+            android:drawablePadding="20dp"
+            android:gravity="center_vertical"
+            android:text="订阅"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/pic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/read"
+            android:layout_marginTop="30dp"
+            android:drawablePadding="20dp"
+            android:gravity="center_vertical"
+            android:text="图片"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/vedio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pic"
+            android:layout_marginTop="30dp"
+            android:drawablePadding="20dp"
+            android:gravity="center_vertical"
+            android:text="视频"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vedio"
+            android:layout_marginBottom="60dp"
+            android:layout_marginTop="40dp"
+            android:drawablePadding="20dp"
+            android:gravity="center_vertical"
+            android:text="跟帖"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+</RelativeLayout>
